@@ -1,0 +1,4 @@
+db:
+  type: posgresql:11
+  port: 1024
+  size: 5
