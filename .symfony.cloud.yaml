@@ -20,6 +20,10 @@ runtime:
 build:
     flavor: none
 
+variables:
+    php-ext:
+        redis: 5.3.1
+
 web:
     locations:
         "/":
@@ -47,3 +51,4 @@ hooks:
 
 relationships:
     database: "db:postgresql"
+    redis: "rediscache:redis"
