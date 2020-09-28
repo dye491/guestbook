@@ -13,7 +13,7 @@ use Twig\Environment;
 
 class ConferenceController extends AbstractController
 {
-    private Environment $twig;
+    private $twig;
 
     public function __construct(Environment $twig)
     {
