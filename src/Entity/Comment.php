@@ -8,6 +8,7 @@ use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comment
 {
@@ -100,6 +101,11 @@ class Comment
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function setCreatedAtValue(): void
+    {
+        $this->createdAt = new \DateTime();
     }
 
     public function getConference(): ?Conference
