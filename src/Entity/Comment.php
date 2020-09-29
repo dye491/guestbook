@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 use DateTimeInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -21,16 +23,20 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $author;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $text;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
+     * @Assert\NotBlank
      */
     private $email;
 
@@ -103,9 +109,12 @@ class Comment
         return $this;
     }
 
+    /**
+     * @ORM\PrePersist()
+     */
     public function setCreatedAtValue(): void
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
     }
 
     public function getConference(): ?Conference
