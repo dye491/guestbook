@@ -25,6 +25,7 @@ class SpamChecker
                 'blog' => 'https://guestbook.example.com',
                 'comment_type' => 'comment',
                 'comment_author' => $comment->getAuthor(),
+                // Set Email to 'akismet-guaranteed-spam@example.com' in add comment form to check spam
                 'comment_author_email' => $comment->getEmail(),
                 'comment_content' => $comment->getText(),
                 'comment_date_gmt' => $comment->getCreatedAt()->format('c'),
